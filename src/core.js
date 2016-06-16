@@ -6,11 +6,11 @@ export function setEntries(state, entries) {
   return state.set('entries', new List(entries))
 }
 
-function getWinners(v) {
-  if (!v) return []
-  const [a, b] = v.get('pair')
-  const aVotes = v.getIn(['tally', a], 0)
-  const bVotes = v.getIn(['tally', b], 0)
+function getWinners(state) {
+  if (!state) return []
+  const [a, b] = state.get('pair')
+  const aVotes = state.getIn(['tally', a], 0)
+  const bVotes = state.getIn(['tally', b], 0)
   return ((aVotes > bVotes) && [a]) || ((aVotes < bVotes) && [b]) || [a, b]
 }
 
@@ -29,7 +29,7 @@ export function next(state) {
 
 export function vote(state, entry) {
   return state.updateIn(
-    ['vote', 'tally', entry],
+    ['tally', entry],
     0,
     tally => tally + 1
   )
