@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint src/*.js test/*.js",
+    "start": "babel-node index.js",
+    "lint": "eslint *.js **/*.js",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive",
     "test:watch": "npm run test -- --watch"
   },
@@ -31,6 +32,7 @@
   },
   "dependencies": {
     "immutable": "^3.8.1",
-    "redux": "^3.5.2"
+    "redux": "^3.5.2",
+    "socket.io": "^1.4.6"
   }
 }
